@@ -1,0 +1,40 @@
+{% if announcements %}
+{% for block in announcements %}
+<!-- Блок - "Анонсы заседаний" -->
+	<!-- Заголовок -->
+    {% if block.caption %}
+	<div class="d"><h1>{{ block.caption|safe }}</h1></div>
+    {% endif %}
+	<!-- Конец Заголовок -->
+
+	<div class="fullw pl-15 tj">
+		<!-- Когда -->
+		{% if block.when %}
+		<div class="tl">
+		<b>{{ block.when|safe }}</b><br/><br/>
+		</div>
+		{% endif %}
+		<!-- Конец Когда -->
+
+		<!-- Где -->
+		{% if block.where %}
+		<div class="tl">
+		<i>{{ block.where|safe }}</i><br/><br/>
+		</div>
+		{% endif %}
+		<!-- Конец Где -->
+
+		<!-- Описание / повестка дня -->
+		{% if block.desc %}
+		<div class="fullw pl-15 tj">
+		{{ block.desc|safe }}
+		</div>
+		{% endif %}
+		<!-- Конец Описание / повестка дня -->
+	</div>
+	<br/>
+<!-- Конец Блок -->
+{% endfor %}
+{% else %}
+<div class="fullw tc">Здесь пока ничего нет.</div>
+{% endif %}

@@ -1,0 +1,22 @@
+from django.contrib import admin
+from .models import *
+
+admin.site.register(IndexBlock)
+admin.site.register(RightBlockMessage)
+admin.site.register(SectionsBlock)
+admin.site.register(BureauMember)
+admin.site.register(ItemAchievement)
+admin.site.register(ItemReport)
+admin.site.register(ItemPlan)
+admin.site.register(ItemSuggestions)
+admin.site.register(ItemProtocol)
+admin.site.register(ItemParticipation)
+admin.site.register(ItemNDocs)
+admin.site.register(ItemDecision)
+admin.site.register(ItemOther)
+admin.site.register(AnnouncementBlock)
+admin.site.register(ConferenceBlock)
+admin.site.register(SeminarBlock)
+admin.site.register(ProjectBlock)
+admin.site.register(ContactsBlock)
+admin.site.register(UserProfile)

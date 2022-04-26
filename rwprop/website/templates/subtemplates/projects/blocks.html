@@ -1,0 +1,32 @@
+{% if blocks %}
+{% for block in blocks %}
+<!-- Блок - "Совместные проекты" -->
+	<!-- Заголовок - Название -->
+    {% if block.caption %}
+	<div class="d"><h1>{{ block.caption|safe }}</h1></div>
+    {% endif %}
+	<!-- Конец Заголовок - Название -->
+
+	<div class="fullw pl-15 tj">
+		<!-- Изображение -->
+		{% if block.image %}
+		<div class="tc">
+	    <img src="{{ block.image.url }}" />
+		</div><br/>
+	    {% endif %}
+		<!-- Конец Изображение -->
+						
+		<!-- Описание -->
+		{% if block.desc %}
+		<div class="fullw pl-15 tj">
+		{{ block.desc|safe }}
+		</div>
+		{% endif %}
+		<!-- Конец Описание -->
+	</div>
+	<br/>
+<!-- Конец Блок -->
+{% endfor %}
+{% else %}
+<div class="fullw tc">Здесь пока ничего нет.</div>
+{% endif %}

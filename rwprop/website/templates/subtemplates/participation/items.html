@@ -1,0 +1,51 @@
+{% if items %}
+{% for item in items %}
+<!-- Блок - "Файлы - Сведения об участии" -->
+
+	<!-- Название -->
+    {% if item.caption %}
+	<div class="d"><h2>{{ item.caption|safe }}</h2></div>
+    {% endif %}
+	<!-- Конец Название -->
+
+	<div class="fullw pl-15 tj">
+		<table class="fullw border-0">
+		<tr>
+		<td>
+		<!-- Описание -->
+		{% if item.desc %}
+		<div class="fullw pl-15 tj">
+		{{ item.desc|safe }}
+		</div><br/>
+		{% endif %}
+		<!-- Конец Описание -->
+		</td>
+		</tr>
+		<tr>
+		<td>
+		<!-- Тип файла -->
+		{% if item.filetype %}
+		<div class="pl-15 tl">
+			<b>Тип файла: </b> {{ item.filetype|safe }}
+		</div><br/>
+		{% endif %}
+		<!-- Конец Тип файла -->
+
+		<!-- Ссылка на скачивание -->
+		{% if item.file %}
+		<div class="pl-20 tl">
+			<a class="btn" href="download/?target=participation&id={{ item.id }}">Скачать</a>
+		</div><br/>
+		{% endif %}
+		<!-- Конец Ссылка на скачивание -->
+		</td>
+		</tr>
+		</table>
+	</div>
+
+	<hr style="border: 0px; height: 1px; background-color: #e0e0e0; width: 100%;"><br/>
+<!-- Конец Блок -->
+{% endfor %}
+{% else %}
+<div class="fullw tc">Здесь пока ничего нет.</div>
+{% endif %}

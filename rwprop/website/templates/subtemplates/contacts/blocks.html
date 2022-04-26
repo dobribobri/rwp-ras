@@ -1,0 +1,15 @@
+
+{% if block %}
+<!-- Блок "Контакты" -->
+<!-- Содержание -->
+{% if block.content %}
+<div class="fullw pl-10 tj">
+	{{ block.content|safe }}
+</div>
+{% endif %}
+<!-- Конец Содержание -->
+<!-- Конец Блок "Контакты" -->
+<br/>
+{% else %}
+<div class="fullw tc">Здесь пока ничего нет.</div>
+{% endif %}

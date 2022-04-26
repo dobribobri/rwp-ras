@@ -1,0 +1,15 @@
+{% if messages %}
+{% for message in messages %}
+	<!-- Правый блок -->
+	{% if message.content %}
+	<div class="fullw pl-15 pr-15">
+	<!-- Содержание -->
+	<b>{{ message.content|safe }}</b>
+	<!-- Конец Содержание -->
+	</div>
+	{% endif %}
+	<!-- Конец Правый блок -->
+{% endfor %}
+{% else %}
+<div class="fullw tc">Здесь пока ничего нет.</div>
+{% endif %}

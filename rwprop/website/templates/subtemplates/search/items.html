@@ -1,0 +1,592 @@
+{% load static %}
+
+<div class="d"><h2>
+    Поиск по запросу: {{ query_string|safe }}
+</h2></div><br/><br/>
+
+
+{% if nf %}
+<div class="fullw pl-15 tl">
+    ...ничего не найдено.
+</div>
+{% else %}
+
+    {% if members %}
+        {% for block in members %}
+        <!-- Блок - Член Бюро -->
+        <table class="bm_table">
+        <tr>
+          <!-- Фото -->
+            <td class="bm_photo_td" rowspan="2">
+              {% if block.image %}
+              <img class="bm_photo" src="{{ block.image.url }}" />
+              {% else %}
+              <img class="bm_photo" src='{% static "img/no-user-photo.png" %}' />
+              {% endif %}
+            </td>
+            <!-- Конец Фото -->
+            <!-- ФИО -->
+            <td class="bm_name_td">
+                <div class="tl pl-15">
+                    {% if block.fio %}
+                     <b>{{ block.fio|safe }}</b>
+                    {% endif %}
+                </div>
+            </td>
+            <!-- Конец ФИО -->
+        </tr>
+        <tr>
+          <!-- Информация -->
+            <td class="bm_desc_td">
+                <div class="tl pl-15">
+                    {% if block.desc %}
+                    {{ block.desc|safe }}
+                    {% endif %}
+                </div>
+            </td>
+            <!-- Конец Информация -->
+        </tr>
+        </table>
+        <!-- Конец Блок - Член Бюро -->
+        <br/>
+        {% endfor %}
+
+    <hr style="border: 0px; height: 1px; background-color: #e0e0e0; width: 100%;"><br/>
+    {% endif %}
+
+    {% if announcements %}
+        {% for block in announcements %}
+        <!-- Блок - "Анонсы заседаний" -->
+            <!-- Заголовок -->
+            {% if block.caption %}
+            <div class="d"><h1>{{ block.caption|safe }}</h1></div>
+            {% endif %}
+            <!-- Конец Заголовок -->
+
+            <div class="fullw pl-15 tj">
+                <!-- Когда -->
+                {% if block.when %}
+                <div class="tl">
+                <b>{{ block.when|safe }}</b><br/><br/>
+                </div>
+                {% endif %}
+                <!-- Конец Когда -->
+
+                <!-- Где -->
+                {% if block.where %}
+                <div class="tl">
+                <i>{{ block.where|safe }}</i><br/><br/>
+                </div>
+                {% endif %}
+                <!-- Конец Где -->
+
+                <!-- Описание / повестка дня -->
+                {% if block.desc %}
+                <div class="fullw pl-15 tj">
+                {{ block.desc|safe }}
+                </div>
+                {% endif %}
+                <!-- Конец Описание / повестка дня -->
+            </div>
+            <br/>
+        <!-- Конец Блок -->
+        {% endfor %}
+
+    <hr style="border: 0px; height: 1px; background-color: #e0e0e0; width: 100%;"><br/>
+    {% endif %}
+
+
+    {% if achievements %}
+        {% for item in achievements %}
+        <!-- Блок - "Файлы - Достижения" -->
+
+            <!-- Название -->
+            {% if item.caption %}
+            <div class="d"><h2>{{ item.caption|safe }}</h2></div>
+            {% endif %}
+            <!-- Конец Название -->
+
+            <div class="fullw pl-15 tj">
+                <table class="fullw border-0">
+                <tr>
+                <td>
+                <!-- Описание -->
+                {% if item.desc %}
+                <div class="fullw pl-15 tj">
+                {{ item.desc|safe }}
+                </div><br/>
+                {% endif %}
+                <!-- Конец Описание -->
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <!-- Тип файла -->
+                {% if item.filetype %}
+                <div class="pl-15 tl">
+                    <b>Тип файла: </b> {{ item.filetype|safe }}
+                </div><br/>
+                {% endif %}
+                <!-- Конец Тип файла -->
+
+                <!-- Ссылка на скачивание -->
+                {% if item.file %}
+                <div class="pl-20 tl">
+                    <a class="btn" href="download/?target=achievements&id={{ item.id }}">Скачать</a>
+                </div><br/>
+                {% endif %}
+                <!-- Конец Ссылка на скачивание -->
+                </td>
+                </tr>
+                </table>
+            </div>
+
+            <hr style="border: 0px; height: 1px; background-color: #e0e0e0; width: 100%;"><br/>
+        <!-- Конец Блок -->
+        {% endfor %}
+
+    <hr style="border: 0px; height: 1px; background-color: #e0e0e0; width: 100%;"><br/>
+    {% endif %}
+
+    {% if reports %}
+        {% for item in reports %}
+        <!-- Блок - "Файлы - Отчёты о работе" -->
+
+            <!-- Название -->
+            {% if item.caption %}
+            <div class="d"><h2>{{ item.caption|safe }}</h2></div>
+            {% endif %}
+            <!-- Конец Название -->
+
+            <div class="fullw pl-15 tj">
+                <table class="fullw border-0">
+                <tr>
+                <td>
+                <!-- Описание -->
+                {% if item.desc %}
+                <div class="fullw pl-15 tj">
+                {{ item.desc|safe }}
+                </div><br/>
+                {% endif %}
+                <!-- Конец Описание -->
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <!-- Тип файла -->
+                {% if item.filetype %}
+                <div class="pl-15 tl">
+                    <b>Тип файла: </b> {{ item.filetype|safe }}
+                </div><br/>
+                {% endif %}
+                <!-- Конец Тип файла -->
+
+                <!-- Ссылка на скачивание -->
+                {% if item.file %}
+                <div class="pl-20 tl">
+                    <a class="btn" href="download/?target=reports&id={{ item.id }}">Скачать</a>
+                </div><br/>
+                {% endif %}
+                <!-- Конец Ссылка на скачивание -->
+                </td>
+                </tr>
+                </table>
+            </div>
+
+            <hr style="border: 0px; height: 1px; background-color: #e0e0e0; width: 100%;"><br/>
+        <!-- Конец Блок -->
+        {% endfor %}
+
+    <hr style="border: 0px; height: 1px; background-color: #e0e0e0; width: 100%;"><br/>
+    {% endif %}
+
+    {% if plans %}
+        {% for item in plans %}
+        <!-- Блок - "Файлы - Планы" -->
+
+            <!-- Название -->
+            {% if item.caption %}
+            <div class="d"><h2>{{ item.caption|safe }}</h2></div>
+            {% endif %}
+            <!-- Конец Название -->
+
+            <div class="fullw pl-15 tj">
+                <table class="fullw border-0">
+                <tr>
+                <td>
+                <!-- Описание -->
+                {% if item.desc %}
+                <div class="fullw pl-15 tj">
+                {{ item.desc|safe }}
+                </div><br/>
+                {% endif %}
+                <!-- Конец Описание -->
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <!-- Тип файла -->
+                {% if item.filetype %}
+                <div class="pl-15 tl">
+                    <b>Тип файла: </b> {{ item.filetype|safe }}
+                </div><br/>
+                {% endif %}
+                <!-- Конец Тип файла -->
+
+                <!-- Ссылка на скачивание -->
+                {% if item.file %}
+                <div class="pl-20 tl">
+                    <a class="btn" href="download/?target=plan&id={{ item.id }}">Скачать</a>
+                </div><br/>
+                {% endif %}
+                <!-- Конец Ссылка на скачивание -->
+                </td>
+                </tr>
+                </table>
+            </div>
+
+            <hr style="border: 0px; height: 1px; background-color: #e0e0e0; width: 100%;"><br/>
+        <!-- Конец Блок -->
+        {% endfor %}
+
+    <hr style="border: 0px; height: 1px; background-color: #e0e0e0; width: 100%;"><br/>
+    {% endif %}
+
+    {% if suggestions %}
+        {% for item in suggestions %}
+        <!-- Блок - "Файлы - Предложения" -->
+
+            <!-- Название -->
+            {% if item.caption %}
+            <div class="d"><h2>{{ item.caption|safe }}</h2></div>
+            {% endif %}
+            <!-- Конец Название -->
+
+            <div class="fullw pl-15 tj">
+                <table class="fullw border-0">
+                <tr>
+                <td>
+                <!-- Описание -->
+                {% if item.desc %}
+                <div class="fullw pl-15 tj">
+                {{ item.desc|safe }}
+                </div><br/>
+                {% endif %}
+                <!-- Конец Описание -->
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <!-- Тип файла -->
+                {% if item.filetype %}
+                <div class="pl-15 tl">
+                    <b>Тип файла: </b> {{ item.filetype|safe }}
+                </div><br/>
+                {% endif %}
+                <!-- Конец Тип файла -->
+
+                <!-- Ссылка на скачивание -->
+                {% if item.file %}
+                <div class="pl-20 tl">
+                    <a class="btn" href="download/?target=suggestions&id={{ item.id }}">Скачать</a>
+                </div><br/>
+                {% endif %}
+                <!-- Конец Ссылка на скачивание -->
+                </td>
+                </tr>
+                </table>
+            </div>
+
+            <hr style="border: 0px; height: 1px; background-color: #e0e0e0; width: 100%;"><br/>
+        <!-- Конец Блок -->
+        {% endfor %}
+
+    <hr style="border: 0px; height: 1px; background-color: #e0e0e0; width: 100%;"><br/>
+    {% endif %}
+
+    {% if protocols %}
+        {% for item in protocols %}
+        <!-- Блок - "Файлы - Протоколы" -->
+
+            <!-- Название -->
+            {% if item.caption %}
+            <div class="d"><h2>{{ item.caption|safe }}</h2></div>
+            {% endif %}
+            <!-- Конец Название -->
+
+            <div class="fullw pl-15 tj">
+                <table class="fullw border-0">
+                <tr>
+                <td>
+                <!-- Описание -->
+                {% if item.desc %}
+                <div class="fullw pl-15 tj">
+                {{ item.desc|safe }}
+                </div><br/>
+                {% endif %}
+                <!-- Конец Описание -->
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <!-- Тип файла -->
+                {% if item.filetype %}
+                <div class="pl-15 tl">
+                    <b>Тип файла: </b> {{ item.filetype|safe }}
+                </div><br/>
+                {% endif %}
+                <!-- Конец Тип файла -->
+
+                <!-- Ссылка на скачивание -->
+                {% if item.file %}
+                <div class="pl-20 tl">
+                    <a class="btn" href="download/?target=protocol&id={{ item.id }}">Скачать</a>
+                </div><br/>
+                {% endif %}
+                <!-- Конец Ссылка на скачивание -->
+                </td>
+                </tr>
+                </table>
+            </div>
+
+            <hr style="border: 0px; height: 1px; background-color: #e0e0e0; width: 100%;"><br/>
+        <!-- Конец Блок -->
+        {% endfor %}
+
+    <hr style="border: 0px; height: 1px; background-color: #e0e0e0; width: 100%;"><br/>
+    {% endif %}
+
+    {% if participations %}
+        {% for item in participations %}
+        <!-- Блок - "Файлы - Сведения об участии" -->
+
+            <!-- Название -->
+            {% if item.caption %}
+            <div class="d"><h2>{{ item.caption|safe }}</h2></div>
+            {% endif %}
+            <!-- Конец Название -->
+
+            <div class="fullw pl-15 tj">
+                <table class="fullw border-0">
+                <tr>
+                <td>
+                <!-- Описание -->
+                {% if item.desc %}
+                <div class="fullw pl-15 tj">
+                {{ item.desc|safe }}
+                </div><br/>
+                {% endif %}
+                <!-- Конец Описание -->
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <!-- Тип файла -->
+                {% if item.filetype %}
+                <div class="pl-15 tl">
+                    <b>Тип файла: </b> {{ item.filetype|safe }}
+                </div><br/>
+                {% endif %}
+                <!-- Конец Тип файла -->
+
+                <!-- Ссылка на скачивание -->
+                {% if item.file %}
+                <div class="pl-20 tl">
+                    <a class="btn" href="download/?target=participation&id={{ item.id }}">Скачать</a>
+                </div><br/>
+                {% endif %}
+                <!-- Конец Ссылка на скачивание -->
+                </td>
+                </tr>
+                </table>
+            </div>
+
+            <hr style="border: 0px; height: 1px; background-color: #e0e0e0; width: 100%;"><br/>
+        <!-- Конец Блок -->
+        {% endfor %}
+
+    <hr style="border: 0px; height: 1px; background-color: #e0e0e0; width: 100%;"><br/>
+    {% endif %}
+
+    {% if others %}
+        {% for item in others %}
+        <!-- Блок - "Файлы - Другое" -->
+
+            <!-- Название -->
+            {% if item.caption %}
+            <div class="d"><h2>{{ item.caption|safe }}</h2></div>
+            {% endif %}
+            <!-- Конец Название -->
+
+            <div class="fullw pl-15 tj">
+                <table class="fullw border-0">
+                <tr>
+                <td>
+                <!-- Описание -->
+                {% if item.desc %}
+                <div class="fullw pl-15 tj">
+                {{ item.desc|safe }}
+                </div><br/>
+                {% endif %}
+                <!-- Конец Описание -->
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <!-- Тип файла -->
+                {% if item.filetype %}
+                <div class="pl-15 tl">
+                    <b>Тип файла: </b> {{ item.filetype|safe }}
+                </div><br/>
+                {% endif %}
+                <!-- Конец Тип файла -->
+
+                <!-- Ссылка на скачивание -->
+                {% if item.file %}
+                <div class="pl-20 tl">
+                    <a class="btn" href="download/?target=other&id={{ item.id }}">Скачать</a>
+                </div><br/>
+                {% endif %}
+                <!-- Конец Ссылка на скачивание -->
+                </td>
+                </tr>
+                </table>
+            </div>
+
+            <hr style="border: 0px; height: 1px; background-color: #e0e0e0; width: 100%;"><br/>
+        <!-- Конец Блок -->
+        {% endfor %}
+
+    <hr style="border: 0px; height: 1px; background-color: #e0e0e0; width: 100%;"><br/>
+    {% endif %}
+
+    {% if conferences %}
+        {% for block in conferences %}
+        <!-- Блок - "Конференции" -->
+            <!-- Заголовок -->
+            {% if block.caption %}
+            <div class="d"><h1>{{ block.caption|safe }}</h1></div>
+            {% endif %}
+            <!-- Конец Заголовок -->
+
+            <div class="fullw pl-15 tj">
+                <!-- Изображение -->
+                {% if block.image %}
+                <div class="tc">
+                <img src="{{ block.image.url }}" />
+                </div><br/>
+                {% endif %}
+                <!-- Конец Изображение -->
+
+                <!-- Когда -->
+                {% if block.when %}
+                <div class="tl">
+                <b>{{ block.when|safe }}</b><br/><br/>
+                </div>
+                {% endif %}
+                <!-- Конец Когда -->
+
+                <!-- Где -->
+                {% if block.where %}
+                <div class="tl">
+                <i>{{ block.where|safe }}</i><br/><br/>
+                </div>
+                {% endif %}
+                <!-- Конец Где -->
+
+                <!-- Информация -->
+                {% if block.desc %}
+                <div class="fullw pl-15 tj">
+                {{ block.desc|safe }}
+                </div>
+                {% endif %}
+                <!-- Конец Информация -->
+            </div>
+            <br/>
+        <!-- Конец Блок -->
+        {% endfor %}
+
+    <hr style="border: 0px; height: 1px; background-color: #e0e0e0; width: 100%;"><br/>
+    {% endif %}
+
+    {% if seminars %}
+        {% for block in seminars %}
+        <!-- Блок - "Семинары" -->
+            <!-- Заголовок -->
+            {% if block.caption %}
+            <div class="d"><h1>{{ block.caption|safe }}</h1></div>
+            {% endif %}
+            <!-- Конец Заголовок -->
+
+            <div class="fullw pl-15 tj">
+                <!-- Изображение -->
+                {% if block.image %}
+                <div class="tc">
+                <img src="{{ block.image.url }}" />
+                </div><br/>
+                {% endif %}
+                <!-- Конец Изображение -->
+
+                <!-- Когда -->
+                {% if block.when %}
+                <div class="tl">
+                <b>{{ block.when|safe }}</b><br/><br/>
+                </div>
+                {% endif %}
+                <!-- Конец Когда -->
+
+                <!-- Где -->
+                {% if block.where %}
+                <div class="tl">
+                <i>{{ block.where|safe }}</i><br/><br/>
+                </div>
+                {% endif %}
+                <!-- Конец Где -->
+
+                <!-- Информация -->
+                {% if block.desc %}
+                <div class="fullw pl-15 tj">
+                {{ block.desc|safe }}
+                </div>
+                {% endif %}
+                <!-- Конец Информация -->
+            </div>
+            <br/>
+        <!-- Конец Блок -->
+        {% endfor %}
+
+    <hr style="border: 0px; height: 1px; background-color: #e0e0e0; width: 100%;"><br/>
+    {% endif %}
+
+    {% if projects %}
+        {% for block in projects %}
+        <!-- Блок - "Совместные проекты" -->
+            <!-- Заголовок - Название -->
+            {% if block.caption %}
+            <div class="d"><h1>{{ block.caption|safe }}</h1></div>
+            {% endif %}
+            <!-- Конец Заголовок - Название -->
+
+            <div class="fullw pl-15 tj">
+                <!-- Изображение -->
+                {% if block.image %}
+                <div class="tc">
+                <img src="{{ block.image.url }}" />
+                </div><br/>
+                {% endif %}
+                <!-- Конец Изображение -->
+
+                <!-- Описание -->
+                {% if block.desc %}
+                <div class="fullw pl-15 tj">
+                {{ block.desc|safe }}
+                </div>
+                {% endif %}
+                <!-- Конец Описание -->
+            </div>
+            <br/>
+        <!-- Конец Блок -->
+        {% endfor %}
+    {% endif %}
+
+{% endif %}

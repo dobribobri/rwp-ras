@@ -1,0 +1,57 @@
+{% if blocks %}
+{% for block in blocks %}
+<!-- Блок - "Главная" -->
+	<!-- Заголовок -->
+    {% if block.h1 %}
+	<div class="d"><h1>{{ block.h1|safe }}</h1></div>
+    {% endif %}
+	<!-- Конец Заголовок -->
+
+	<div class="fullw pl-15 tj">
+		<!-- Вводная часть -->
+		{% if block.intro %}
+		{{ block.intro|safe }}
+		{% endif %}
+		<!-- Конец Вводная часть -->
+					  
+		<!-- Подзаголовок 1 -->
+		{% if block.h2_1 %}
+		<div class="d"><h2>{{ block.h2_1|safe }}</h2></div>
+		{% endif %}
+		<!-- Конец Подзаголовок 1 -->
+						
+		<!-- Основная часть 1 -->
+		{% if block.main_part_1 %}
+		<div class="fullw pl-15 tj">
+		{{ block.main_part_1|safe }}
+		</div>
+		{% endif %}
+		<!-- Конец Основная часть 1-->
+						
+		<!-- Подзаголовок 2 -->
+		{% if block.h2_2 %}
+		<div class="d"><h2>{{ block.h2_2|safe }}</h2></div>
+		{% endif %}
+		<!-- Конец Подзаголовок 2 -->
+						
+		<!-- Основная часть 2 -->
+		{% if block.main_part_2 %}
+		<div class="fullw pl-15 tj">
+		{{ block.main_part_2|safe }}
+		</div>
+		{% endif %}
+		<!-- Конец Основная часть 2-->
+						
+		<br/>
+		<!-- Заключительная часть -->
+		{% if block.coda %}
+		{{ block.coda|safe }}
+		{% endif %}
+		<!-- Конец Заключительная часть -->
+	</div>
+	<br/>
+<!-- Конец Блок -->
+{% endfor %}
+{% else %}
+<div class="fullw tc">Здесь пока ничего нет.</div>
+{% endif %}

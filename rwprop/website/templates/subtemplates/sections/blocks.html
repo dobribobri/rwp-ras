@@ -1,0 +1,66 @@
+{% if block %}
+<!-- Блок "Региональные отделения и секции" -->
+<!-- Вводная часть -->
+{% if block.intro %}
+<div class="fullw pl-10 tj">
+	{{ block.intro|safe }}
+</div>
+{% endif %}
+<!-- Конец Вводная часть -->
+
+<!-- Заголовок 1 -->
+{% if block.h_1 %}
+<div class="d" id="#regions"><h2>{{ block.h_1|safe }}</h2></div>
+{% endif %}
+<!-- Конец Заголовок 1 -->
+
+<div class="fullw pl-15 tj">
+  <!-- Описание 1 -->
+	{% if block.desc_1 %}
+	{{ block.desc_1|safe }}<br/>
+	{% endif %}
+  <!-- Конец Описание 1 -->
+  <br/>
+	<!-- Основная часть 1 -->
+	{% if block.main_part_1 %}
+	<div class="fullw pl-15 tl">
+		{{ block.main_part_1|safe }}
+	</div>
+	{% endif %}
+	<!-- Конец Основная часть 1 -->
+</div>
+
+<!-- Заголовок 2 -->
+{% if block.h_2 %}
+<div class="d" id="#sections"><h2>{{ block.h_2|safe }}</h2></div>
+{% endif %}
+<!-- Конец Заголовок 2 -->
+
+<div class="fullw pl-15 tj">
+  <!-- Описание 2 -->
+  {% if block.desc_2 %}
+  {{ block.desc_2|safe }}<br/>
+  {% endif %}
+  <!-- Конец Описание 2 -->
+  <br/>
+	<!-- Основная часть 2 -->
+	{% if block.main_part_2 %}
+	<div class="fullw pl-15 tl">
+		{{ block.main_part_2|safe }}
+	</div>
+	{% endif %}
+	<!-- Конец Основная часть 2 -->		  
+</div>
+
+<!-- Заключительная часть -->
+{% if block.coda %}
+<div class="fullw pl-10 tj">
+	{{ block.coda|safe }}
+</div>
+{% endif %}
+<!-- Конец Заключительная часть -->
+<!-- Конец Блок "Региональные отделения и секции" -->
+<br/>
+{% else %}
+<div class="fullw tc">Здесь пока ничего нет.</div>
+{% endif %}

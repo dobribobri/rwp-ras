@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Контакты - Научный Совет РАН по распространению радиоволн</title>
+
+<link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Spectral+SC" rel="stylesheet" type="text/css">
+{% load static %}
+<link href='{% static "main.css" %}' rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href='{% static "img/favicon.ico" %}' type="image/x-icon">
+</head>
+
+<body>
+	<header>
+		<div class="header">
+			<a href="{% url 'index' %}"><img id="logo" src='{% static "img/logo.png" %}' /></a>
+		</div>
+	</header>
+	
+	<div class="top_orange_0"><div class="mob_menu"><a href="#menu">&#8801;</a></div></div>
+	<div class="top_orange_1">
+		<div class="security">
+		{% if user.is_authenticated %}
+			Вы вошли как {{ username }}&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a href="{% url 'settings' %}">Профиль</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a href="{% url 'logout' %}">Выход</a>
+		{% else %}
+            <a href="{% url 'register' %}">Регистрация</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="{% url 'login' %}">Вход</a>
+		{% endif %}
+		</div>
+	</div>
+	<div class="top_rul"></div>
+	<div class="top_nav">
+	  <p class="top_nav_path">
+	  	<a href="{% url 'index' %}">Главная</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">Контакты</a>
+	  </p>
+	</div>
+	<div class="top_search">
+		<form class="top_search_form">
+			<input class="top_search_input" type="text" placeholder="Поиск..." name="q">
+			<button class="top_search_btn" type="submit"></button>
+		</form>
+	</div>
+	<div class="top_sep" id="menu"></div>
+	
+	<div class="main">
+		<div class="left_block">
+			<div id="nav">
+				<ul class="top-level">
+				    <li><a href="{% url 'index' %}">О Научном Совете РАН</a></li>
+				    <li><a href="{% url 'structure' %}">Состав Совета</a>
+				        <ul class="sub-level">
+				            <li><a href="{% url 'bureau' %}">Бюро Совета</a></li>
+				            <li><a href="sections#sections">Секции</a></li>
+				            <li><a href="sections#regions">Региональные отделения</a></li>
+				        </ul>
+				    </li>
+				    <li><a href="{% url 'work' %}">Деятельность Совета</a>
+				       <ul class="sub-level">
+				            <li><a href="{% url 'announcement' %}">Анонсы заседаний</a></li>
+				            <li><a href="{% url 'protocol' %}">Протоколы заседаний Бюро</a></li>
+				            <li><a href="{% url 'plan' %}">План работы</a></li>
+						    <li><a href="{% url 'achievements' %}">Отчеты о достижениях</a></li>
+						    <li><a href="{% url 'suggestions' %}">Предложения</a></li>
+						    <li><a href="{% url 'participation' %}">Сведения об участии</a></li>
+				            <li><a href="{% url 'reports' %}">Отчеты о работе Совета</a></li>
+						    <li><a href="{% url 'other' %}">Другие документы</a></li>
+				        </ul>
+				    </li>
+				    <li><a href="community">Научное сообщество</a>
+				    		<ul class="sub-level">
+				            <li><a href="{% url 'conferences' %}">Конференции</a></li>
+				            <li><a href="{% url 'seminars' %}">Семинары</a></li>
+				            <li><a href="{% url 'projects' %}">Совместные проекты</a></li>
+				        </ul>
+				    </li>
+				    <li class="current"><a href="{% url 'contacts' %}">Контакты</a></li>
+					</ul>
+			</div>
+		</div>
+		
+		<div class="content_block">
+
+			{% include "subtemplates/contacts/blocks.html" %}
+			
+		</div>
+		
+		<div class="right_block">
+		  
+		  {% include "subtemplates/right/blocks.html" %}
+
+		</div>
+		
+	</div>
+
+</body>
+</html>

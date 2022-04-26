@@ -1,0 +1,48 @@
+{% load static %}
+
+{% if blocks %}
+<div class="d"><h2>Список членов Бюро Научного Совета по распространению радиоволн</h2></div>
+<br/>
+
+{% for block in blocks %}
+<!-- Блок - Член Бюро -->
+<table class="bm_table">
+<tr>
+  <!-- Фото -->
+	<td class="bm_photo_td" rowspan="2">
+	  {% if block.image %}
+	  <img class="bm_photo" src="{{ block.image.url }}" />
+	  {% else %}
+	  <img class="bm_photo" src='{% static "img/no-user-photo.png" %}' />
+	  {% endif %}
+	</td>
+	<!-- Конец Фото -->
+	<!-- ФИО -->
+	<td class="bm_name_td">
+		<div class="tl pl-15">
+			{% if block.fio %}
+			 <b>{{ block.fio|safe }}</b>
+			{% endif %}
+		</div>
+	</td>
+	<!-- Конец ФИО -->
+</tr>
+<tr>
+  <!-- Информация -->
+	<td class="bm_desc_td">
+		<div class="tl pl-15">
+			{% if block.desc %}
+			{{ block.desc|safe }}
+			{% endif %}
+		</div>
+	</td>
+	<!-- Конец Информация -->
+</tr>
+</table>
+<!-- Конец Блок - Член Бюро -->
+<br/>
+{% endfor %}
+{% else %}
+<div class="fullw tc">Здесь пока ничего нет.</div>
+{% endif %}
+
